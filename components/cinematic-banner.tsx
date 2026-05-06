@@ -2,20 +2,20 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export function CinematicBanner() {
   return (
-    <section className="relative py-32 sm:py-48 overflow-hidden">
+    <section className="relative py-32 sm:py-48 overflow-hidden bg-background">
       {/* Background with dramatic lighting */}
-      <div className="absolute inset-0 bg-background" />
-      
-      {/* Cinematic light beams */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[800px] bg-celeste/5 rotate-12 blur-[100px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[600px] bg-deep-blue/8 -rotate-12 blur-[80px]" />
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(114,188,220,0.05)_0%,transparent_50%)]" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_50%,rgba(212,175,55,0.05)_0%,transparent_50%)]" />
+      </div>
       
       {/* Grid overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
@@ -23,102 +23,108 @@ export function CinematicBanner() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text content */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <span className="text-xs tracking-[0.3em] text-gold uppercase">Edición Limitada</span>
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 bg-gold rounded-full" />
+              <span className="text-[10px] tracking-[0.3em] text-gold font-bold uppercase">Edición de Coleccionista</span>
+            </div>
             
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-4 tracking-tight leading-[1.1]">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mt-4 tracking-tighter leading-[0.9] uppercase italic">
               <span className="block">LA LEYENDA</span>
-              <span className="block text-celeste">NUNCA MUERE</span>
+              <span className="block text-celeste">INMORTAL</span>
             </h2>
             
-            <p className="text-lg text-muted-foreground mt-6 max-w-md text-pretty">
-              Celebrando el momento más icónico en la historia del fútbol. 
-              La colección del Mundial 1986 - donde Maradona se hizo inmortal.
+            <p className="text-xl text-muted-foreground mt-8 max-w-md leading-relaxed font-medium">
+              Revive el momento más icónico en la historia del fútbol. 
+              La colección México '86: donde el Diego se convirtió en Dios.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row gap-5 mt-12">
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-gold text-background font-semibold tracking-wide rounded-sm hover:bg-gold/90 transition-colors"
+                whileHover={{ scale: 1.05, backgroundColor: "#EAB308" }}
+                whileTap={{ scale: 0.95 }}
+                className="group flex items-center justify-center gap-3 px-10 py-5 bg-gold text-background font-black tracking-[0.2em] rounded-xl transition-all duration-300"
               >
                 COMPRAR RETRO
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </div>
 
             {/* Stats */}
-            <div className="flex items-center gap-8 mt-12 pt-8 border-t border-border">
+            <div className="flex items-center gap-12 mt-16 pt-10 border-t border-white/5">
               <div>
-                <div className="text-3xl font-bold text-foreground">1986</div>
-                <div className="text-xs tracking-[0.2em] text-muted-foreground mt-1">MUNDIAL</div>
+                <div className="text-4xl font-black text-foreground tracking-tighter">1986</div>
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1 font-bold uppercase">MUNDIAL</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-celeste">10</div>
-                <div className="text-xs tracking-[0.2em] text-muted-foreground mt-1">CAMISETA</div>
+                <div className="text-4xl font-black text-celeste tracking-tighter">10</div>
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1 font-bold uppercase">EL D10S</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-foreground">∞</div>
-                <div className="text-xs tracking-[0.2em] text-muted-foreground mt-1">LEYENDA</div>
+                <div className="text-4xl font-black text-foreground tracking-tighter">∞</div>
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1 font-bold uppercase">GLORIA</div>
               </div>
             </div>
           </motion.div>
 
           {/* Visual element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-center justify-center"
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            {/* Dramatic glow */}
-            <div className="absolute w-80 h-80 bg-gold/10 rounded-full blur-[80px]" />
+            {/* Cinematic light beams */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_50%_50%,rgba(114,188,220,0.15)_0%,transparent_70%)] pointer-events-none" />
             
-            {/* Number 10 display */}
-            <div className="relative">
+            {/* Jersey display */}
+            <div className="relative group">
               <motion.div
-                animate={{ rotateY: [0, 5, 0, -5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-[22rem] lg:h-[30rem]"
+                animate={{ 
+                  y: [0, -20, 0],
+                  rotateZ: [-1, 1, -1]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="relative w-full aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10"
               >
-                {/* Jersey silhouette */}
-                <div className="absolute inset-0 bg-gradient-to-b from-celeste/30 to-deep-blue/40 rounded-sm border border-celeste/20">
-                  {/* Stripes */}
-                  <div className="absolute inset-0 flex">
-                    <div className="flex-1 bg-celeste/30" />
-                    <div className="flex-1 bg-foreground/10" />
-                    <div className="flex-1 bg-celeste/30" />
-                    <div className="flex-1 bg-foreground/10" />
-                    <div className="flex-1 bg-celeste/30" />
-                  </div>
-                  
-                  {/* Large 10 */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-[12rem] font-bold text-foreground/80 drop-shadow-2xl">
-                      10
-                    </span>
-                  </div>
-                </div>
+                <Image
+                  src="/images/products/jersey-8.jpg"
+                  alt="Retro Argentina 1986 Jersey"
+                  fill
+                  className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                />
+                
+                {/* Glossy reflection effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                
+                {/* Bottom shading */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              </motion.div>
 
-                {/* Floating particles */}
-                <motion.div
-                  animate={{ y: [-20, 20, -20] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -top-8 -right-8 w-16 h-16 bg-gold/20 rounded-full blur-xl"
-                />
-                <motion.div
-                  animate={{ y: [20, -20, 20] }}
-                  transition={{ duration: 5, repeat: Infinity }}
-                  className="absolute -bottom-8 -left-8 w-20 h-20 bg-celeste/20 rounded-full blur-xl"
-                />
+              {/* Floating detail tag */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 }}
+                className="absolute -bottom-10 right-0 sm:-right-10 bg-card/80 backdrop-blur-2xl border border-white/10 p-6 rounded-2xl shadow-2xl max-w-[200px]"
+              >
+                <div className="text-xs font-bold text-gold tracking-widest uppercase mb-2">AUTENTICIDAD</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Réplica exacta con tejidos de época y detalles bordados a mano.
+                </p>
               </motion.div>
             </div>
           </motion.div>

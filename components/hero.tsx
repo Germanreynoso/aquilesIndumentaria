@@ -2,159 +2,166 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, Play } from "lucide-react"
+import Image from "next/image"
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-graphite" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-graphite" />
       
       {/* Cinematic light effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-celeste/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-deep-blue/10 rounded-full blur-[100px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(114,188,220,0.1)_0%,transparent_70%)]" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-deep-blue/20 rounded-full blur-[120px] opacity-50" />
       
       {/* Grid pattern overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px'
+          backgroundSize: '80px 80px'
         }}
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="text-center lg:text-left"
           >
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-6"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="inline-flex items-center gap-3 px-5 py-2 bg-white/5 border border-white/10 rounded-full mb-8 backdrop-blur-md"
             >
-              <span className="w-2 h-2 bg-celeste rounded-full animate-pulse" />
-              <span className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
-                Nueva Colección 2026
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-celeste opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-celeste"></span>
+              </span>
+              <span className="text-[10px] tracking-[0.3em] text-foreground font-bold uppercase">
+                COLECCIÓN OFICIAL 2024/25
               </span>
             </motion.div>
 
             {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] text-balance">
-              <span className="block">DONDE</span>
-              <span className="block text-celeste">LA PASIÓN</span>
-              <span className="block">ENCUENTRA EL ESTILO</span>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground leading-[0.9] uppercase italic">
+              <span className="block overflow-hidden">
+                <motion.span 
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="block"
+                >EL CORAZÓN</motion.span>
+              </span>
+              <span className="block text-celeste overflow-hidden">
+                <motion.span 
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="block"
+                >DEL VALLE</motion.span>
+              </span>
             </h1>
 
             {/* Subheadline */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 text-pretty"
+              transition={{ duration: 1, delay: 1 }}
+              className="mt-8 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed"
             >
-              Camisetas de fútbol premium que celebran la cultura del fútbol argentino. 
-              Desde La Bombonera hasta el escenario mundial.
+              Indumentaria deportiva de alta gama diseñada para los que viven el fútbol con intensidad. 
+              Calidad profesional en cada detalle.
             </motion.p>
 
             {/* CTA buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="mt-10 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start"
             >
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-foreground text-background font-semibold tracking-wide rounded-sm hover:bg-foreground/90 transition-colors"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(114,188,220,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                className="group flex items-center justify-center gap-3 px-10 py-5 bg-foreground text-background font-black tracking-[0.2em] rounded-xl hover:bg-celeste hover:text-background transition-all duration-300"
               >
                 COMPRAR AHORA
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-3 px-8 py-4 border border-border text-foreground font-semibold tracking-wide rounded-sm hover:bg-secondary/50 transition-colors"
+                whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
+                whileTap={{ scale: 0.95 }}
+                className="group flex items-center justify-center gap-3 px-10 py-5 border-2 border-white/10 text-foreground font-bold tracking-[0.1em] rounded-xl transition-all duration-300"
               >
-                <Play className="w-4 h-4" />
-                VER VIDEO
-              </motion.button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-12 flex items-center justify-center lg:justify-start gap-8 sm:gap-12"
-            >
-              {[
-                { value: "50K+", label: "FANS" },
-                { value: "200+", label: "CAMISETAS" },
-                { value: "4.9", label: "VALORACIÓN" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-[10px] sm:text-xs tracking-[0.2em] text-muted-foreground mt-1">{stat.label}</div>
+                <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full group-hover:bg-celeste/20 transition-colors">
+                  <Play className="w-4 h-4 fill-current" />
                 </div>
-              ))}
+                VER SPOT
+              </motion.button>
             </motion.div>
           </motion.div>
 
           {/* Right content - Featured Jersey */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            className="relative flex items-center justify-center lg:justify-end"
           >
-            {/* Glow effect behind jersey */}
-            <div className="absolute w-80 h-80 sm:w-96 sm:h-96 bg-celeste/10 rounded-full blur-[80px]" />
-            
-            {/* Jersey display */}
-            <div className="relative">
-              {/* Jersey placeholder - cinematic display */}
+            {/* Jersey display container */}
+            <div className="relative group">
+              {/* Dynamic shadow/glow */}
+              <div className="absolute inset-0 bg-celeste/20 blur-[100px] rounded-full scale-75 group-hover:scale-110 transition-transform duration-1000" />
+              
+              {/* Main Image */}
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-96 lg:h-[32rem] bg-gradient-to-b from-celeste/20 to-deep-blue/30 rounded-sm flex items-center justify-center border border-celeste/20"
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-[28rem] lg:h-[35rem] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
               >
-                {/* Argentina flag stripes */}
-                <div className="absolute inset-0 overflow-hidden rounded-sm">
-                  <div className="absolute top-0 left-0 right-0 h-1/3 bg-celeste/30" />
-                  <div className="absolute top-1/3 left-0 right-0 h-1/3 bg-foreground/10" />
-                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-celeste/30" />
-                </div>
-                
-                {/* Sun of May */}
-                <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gold/80 flex items-center justify-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gold flex items-center justify-center text-background font-bold text-2xl sm:text-3xl">
-                    ☀
-                  </div>
-                </div>
-
-                {/* Number */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-6xl sm:text-7xl font-bold text-foreground/80">
-                  10
-                </div>
+                <Image
+                  src="/images/products/jersey-1.jpg"
+                  alt="Featured Argentina Jersey"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </motion.div>
 
-              {/* Product info overlay */}
+              {/* Floating Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-[-4rem] bg-card/90 backdrop-blur-sm border border-border p-4 rounded-sm"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 1.5 }}
+                className="absolute -bottom-6 -left-6 sm:-left-12 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl"
               >
-                <div className="text-xs tracking-[0.15em] text-muted-foreground">ARGENTINA 2026</div>
-                <div className="text-lg font-bold text-foreground mt-1">EQUIPACIÓN LOCAL</div>
-                <div className="text-celeste font-bold mt-2">$149</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-celeste rounded-full flex items-center justify-center font-black text-background">
+                    10
+                  </div>
+                  <div>
+                    <div className="text-[10px] tracking-[0.2em] text-celeste font-bold">PREMIUM EDITION</div>
+                    <div className="text-lg font-black text-foreground">ARGENTINA 24</div>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Stats detail */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.8 }}
+                className="absolute top-10 -right-4 sm:-right-8 w-24 h-24 bg-gold rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-background rotate-12"
+              >
+                <span className="text-[10px] font-bold text-background leading-none uppercase">Desde</span>
+                <span className="text-xl font-black text-background leading-none">$149</span>
               </motion.div>
             </div>
           </motion.div>
@@ -165,17 +172,19 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        transition={{ delay: 2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] tracking-[0.3em] text-muted-foreground">DESLIZAR</span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-muted-foreground to-transparent" />
-        </motion.div>
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-2 bg-celeste rounded-full"
+            />
+          </div>
+          <span className="text-[10px] tracking-[0.4em] text-white/40 font-bold uppercase">EXPLORAR</span>
+        </div>
       </motion.div>
     </section>
   )
