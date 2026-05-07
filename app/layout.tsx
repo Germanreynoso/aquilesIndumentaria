@@ -9,9 +9,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'CAMISETAS | Camisetas de Fútbol Argentino Premium',
+  title: 'Aquiles Indumentaria | Camisetas de Fútbol Premium',
   description: 'Descubre camisetas de fútbol premium que celebran la cultura del fútbol argentino. Selección Argentina, Boca Juniors, River Plate, clubes europeos y colecciones retro icónicas.',
-  keywords: ['camisetas de fútbol', 'Argentina', 'Boca Juniors', 'River Plate', 'soccer', 'camisetas', 'futbol'],
+  keywords: ['camisetas de fútbol', 'Aquiles Indumentaria', 'Tucumán', 'Argentina', 'Boca Juniors', 'River Plate', 'soccer', 'camisetas', 'futbol'],
+  alternates: {
+    languages: {
+      'es-AR': '/',
+      'es': '/',
+    },
+  },
+  openGraph: {
+    title: 'Aquiles Indumentaria | Camisetas de Fútbol Premium',
+    description: 'Descubre camisetas de fútbol premium que celebran la cultura del fútbol argentino.',
+    url: 'https://aquilesindumentaria.com.ar',
+    siteName: 'Aquiles Indumentaria',
+    images: [
+      {
+        url: '/icon-light-32x32.png',
+        width: 800,
+        height: 600,
+        alt: 'Aquiles Indumentaria Logo',
+      },
+    ],
+    locale: 'es_AR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aquiles Indumentaria | Camisetas de Fútbol Premium',
+    description: 'Descubre camisetas de fútbol premium que celebran la cultura del fútbol argentino.',
+    images: ['/icon-light-32x32.png'],
+  },
   generator: 'v0.app',
   icons: {
     icon: [

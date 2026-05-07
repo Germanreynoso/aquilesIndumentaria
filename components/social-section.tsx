@@ -26,7 +26,7 @@ export function SocialSection() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Instagram className="w-5 h-5 text-celeste" />
-            <span className="text-xs tracking-[0.3em] text-celeste uppercase">@camisetas_argentina</span>
+            <span className="text-xs tracking-[0.3em] text-celeste uppercase">@aquiles.indumentaria</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
             USADO POR LA COMUNIDAD
@@ -81,7 +81,7 @@ export function SocialSection() {
           className="text-center mt-10"
         >
           <motion.a
-            href="https://instagram.com"
+            href="https://www.instagram.com/aquiles.indumentaria/"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}

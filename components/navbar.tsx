@@ -45,7 +45,7 @@ export function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-xl sm:text-3xl font-black tracking-tighter text-foreground italic">
+              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-foreground">
                 AQUILES
               </span>
               <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.4em] text-celeste font-bold">

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Instagram, Twitter, Youtube, Facebook } from "lucide-react"
+import { Instagram, Twitter, Youtube, Facebook, MessageCircle } from "lucide-react"
 
 const footerLinks = {
   shop: [
@@ -27,7 +27,8 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/aquiles.indumentaria/" },
+  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/3816464923" },
   { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
   { name: "YouTube", icon: Youtube, href: "https://youtube.com" },
   { name: "Facebook", icon: Facebook, href: "https://facebook.com" },
@@ -48,7 +49,7 @@ export function Footer() {
               viewport={{ once: true }}
               className="inline-block"
             >
-              <span className="text-2xl font-bold tracking-tighter text-foreground">CAMISETAS</span>
+              <span className="text-2xl font-bold tracking-tighter text-foreground">AQUILES INDUMENTARIA</span>
             </motion.a>
             <p className="text-sm text-muted-foreground mt-4 max-w-xs">
               Camisetas de fútbol premium que celebran la cultura del fútbol argentino. Nacido en Buenos Aires, usado en todo el mundo.
@@ -144,7 +145,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">
-              © 2026 CAMISETAS. Todos los derechos reservados.
+              © 2026 AQUILES INDUMENTARIA. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-6">
               <a href="#privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
@@ -171,7 +172,7 @@ export function Footer() {
               key={i}
               className="text-[8rem] sm:text-[12rem] font-bold tracking-tighter text-border/30 mx-8"
             >
-              CAMISETAS
+              AQUILES INDUMENTARIA
             </span>
           ))}
         </motion.div>
