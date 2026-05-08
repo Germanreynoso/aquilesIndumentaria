@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react"
 
+import { useCart } from "./cart-context"
+
 const navLinks = [
   { name: "SELECCION ARGENTINA", href: "#seleccion-argentina" },
   { name: "RETRO", href: "#retro" },
@@ -16,6 +18,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const { totalItems, setIsCartOpen } = useCart()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,13 +130,20 @@ export function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={() => setIsCartOpen(true)}
                 className="relative p-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Bolsa de compras"
               >
                 <ShoppingBag className="w-5 h-5" />
-                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-celeste text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
-                  2
-                </span>
+                {totalItems > 0 && (
+                  <motion.span 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-celeste text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center"
+                  >
+                    {totalItems}
+                  </motion.span>
+                )}
               </motion.button>
               
               {/* Mobile Menu Button */}

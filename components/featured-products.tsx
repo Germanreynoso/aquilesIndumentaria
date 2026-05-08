@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Heart, ShoppingBag, Star } from "lucide-react"
 import Image from "next/image"
+import { useCart } from "./cart-context"
 
 const products = [
   {
@@ -139,6 +140,7 @@ const products = [
 export function FeaturedProducts() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState<string>("")
+  const { addItem } = useCart()
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -298,6 +300,12 @@ export function FeaturedProducts() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => addItem({
+                        id: product.id,
+                        name: product.name,
+                        image: product.image,
+                        sizes: product.sizes
+                      })}
                       className="w-full py-4 bg-foreground text-background text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-2 shadow-2xl rounded-lg"
                     >
                       <ShoppingBag className="w-4 h-4" />

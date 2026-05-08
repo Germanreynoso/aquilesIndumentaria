@@ -66,6 +66,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { CartProvider } from '@/components/cart-context'
+import { CartSidebar } from '@/components/cart-sidebar'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,8 +77,11 @@ export default function RootLayout({
   return (
     <html lang="es" className="bg-background">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <CartProvider>
+          {children}
+          <CartSidebar />
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </CartProvider>
       </body>
     </html>
   )
