@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react"
 
 const navLinks = [
-  { name: "ARGENTINA", href: "#argentina" },
-  { name: "BOCA JUNIORS", href: "#boca" },
-  { name: "RIVER PLATE", href: "#river" },
-  { name: "EUROPEOS", href: "#european" },
+  { name: "SELECCION ARGENTINA", href: "#seleccion-argentina" },
   { name: "RETRO", href: "#retro" },
+  { name: "FUTBOL ARGENTINO", href: "#futbol-argentino" },
+  { name: "URBAN", href: "#urban" },
 ]
 
 export function Navbar() {

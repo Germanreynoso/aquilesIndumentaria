@@ -12,9 +12,9 @@ export function CinematicBanner() {
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(114,188,220,0.05)_0%,transparent_50%)]" />
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_50%,rgba(212,175,55,0.05)_0%,transparent_50%)]" />
       </div>
-      
+
       {/* Grid overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -35,15 +35,14 @@ export function CinematicBanner() {
               <span className="w-1.5 h-1.5 bg-gold rounded-full" />
               <span className="text-[10px] tracking-[0.3em] text-gold font-bold uppercase">Edición de Coleccionista</span>
             </div>
-            
+
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mt-4 tracking-tighter leading-[0.9] uppercase italic">
               <span className="block">LA LEYENDA</span>
               <span className="block text-celeste">INMORTAL</span>
             </h2>
-            
+
             <p className="text-xl text-muted-foreground mt-8 max-w-md leading-relaxed font-medium">
-              Revive el momento más icónico en la historia del fútbol. 
-              La colección México '86: donde el Diego se convirtió en Dios.
+              Mística Maradona 1990: La Armadura del Diez. Llevá con vos un pedazo de historia del Mundial más emocionante. Ideal para fanáticos y coleccionistas.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 mt-12">
@@ -84,31 +83,31 @@ export function CinematicBanner() {
           >
             {/* Cinematic light beams */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_50%_50%,rgba(114,188,220,0.15)_0%,transparent_70%)] pointer-events-none" />
-            
+
             {/* Jersey display */}
             <div className="relative group">
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, -20, 0],
                   rotateZ: [-1, 1, -1]
                 }}
-                transition={{ 
-                  duration: 8, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
                 className="relative w-full aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10"
               >
                 <Image
-                  src="/images/products/jersey-8.jpg"
+                  src="/images/products/Camiseta Retro Maradona Talle S al XXL.jpg"
                   alt="Retro Argentina 1986 Jersey"
                   fill
                   className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
                 />
-                
+
                 {/* Glossy reflection effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                
+
                 {/* Bottom shading */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               </motion.div>

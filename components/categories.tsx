@@ -5,36 +5,12 @@ import { ArrowUpRight } from "lucide-react"
 
 const categories = [
   {
-    id: "argentina",
-    name: "ARGENTINA",
+    id: "seleccion-argentina",
+    name: "SELECCION ARGENTINA",
     subtitle: "Selección Nacional",
     description: "Colección oficial Albiceleste",
     items: "24 Artículos",
     accent: "bg-celeste",
-  },
-  {
-    id: "boca",
-    name: "BOCA JUNIORS",
-    subtitle: "La Mitad + 1",
-    description: "Camisetas auténticas Xeneize",
-    items: "32 Artículos",
-    accent: "bg-gold",
-  },
-  {
-    id: "river",
-    name: "RIVER PLATE",
-    subtitle: "El Millonario",
-    description: "Clásica colección banda roja",
-    items: "28 Artículos",
-    accent: "bg-destructive",
-  },
-  {
-    id: "european",
-    name: "EUROPEOS",
-    subtitle: "Ligas Top",
-    description: "Clubes de Champions League",
-    items: "86 Artículos",
-    accent: "bg-deep-blue",
   },
   {
     id: "retro",
@@ -43,6 +19,22 @@ const categories = [
     description: "Camisetas vintage icónicas",
     items: "45 Artículos",
     accent: "bg-muted-foreground",
+  },
+  {
+    id: "futbol-argentino",
+    name: "FUTBOL ARGENTINO",
+    subtitle: "Liga Profesional",
+    description: "Equipos del fútbol local",
+    items: "60 Artículos",
+    accent: "bg-gold",
+  },
+  {
+    id: "urban",
+    name: "URBAN",
+    subtitle: "Streetwear",
+    description: "Indumentaria urbana",
+    items: "30 Artículos",
+    accent: "bg-deep-blue",
   },
 ]
 
@@ -71,7 +63,7 @@ export function Categories() {
         </motion.div>
 
         {/* Categories grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((category, index) => (
             <motion.a
               key={category.id}

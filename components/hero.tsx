@@ -3,19 +3,41 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Play } from "lucide-react"
 import Image from "next/image"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+function InstagramEmbed() {
+  return (
+    <div className="w-full flex justify-center items-center bg-white rounded-xl overflow-hidden shadow-2xl">
+      <iframe
+        src="https://www.instagram.com/reel/DVzcGsDjnBP/embed"
+        className="w-[326px] h-[580px] sm:w-[400px] sm:h-[620px] border-0"
+        scrolling="no"
+        allowTransparency={true}
+        allow="encrypted-media"
+      />
+    </div>
+  )
+}
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-graphite" />
-      
+
       {/* Cinematic light effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(114,188,220,0.1)_0%,transparent_70%)]" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-deep-blue/20 rounded-full blur-[120px] opacity-50" />
-      
+
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -51,7 +73,7 @@ export function Hero() {
             {/* Main headline */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground leading-[0.9] uppercase italic">
               <span className="block overflow-hidden">
-                <motion.span 
+                <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -59,7 +81,7 @@ export function Hero() {
                 >EL CORAZÓN</motion.span>
               </span>
               <span className="block text-celeste overflow-hidden">
-                <motion.span 
+                <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
@@ -75,7 +97,7 @@ export function Hero() {
               transition={{ duration: 1, delay: 1 }}
               className="mt-8 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed"
             >
-              Indumentaria deportiva de alta gama diseñada para los que viven el fútbol con intensidad. 
+              Indumentaria deportiva de alta gama diseñada para los que viven el fútbol con intensidad.
               Calidad profesional en cada detalle.
             </motion.p>
 
@@ -94,16 +116,29 @@ export function Hero() {
                 COMPRAR AHORA
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
-                whileTap={{ scale: 0.95 }}
-                className="group flex items-center justify-center gap-3 px-10 py-5 border-2 border-white/10 text-foreground font-bold tracking-[0.1em] rounded-xl transition-all duration-300"
-              >
-                <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full group-hover:bg-celeste/20 transition-colors">
-                  <Play className="w-4 h-4 fill-current" />
-                </div>
-                VER SPOT
-              </motion.button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <motion.button
+                    whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group flex items-center justify-center gap-3 px-10 py-5 border-2 border-white/10 text-foreground font-bold tracking-[0.1em] rounded-xl transition-all duration-300"
+                  >
+                    <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full group-hover:bg-celeste/20 transition-colors">
+                      <Play className="w-4 h-4 fill-current" />
+                    </div>
+                    VER SPOT
+                  </motion.button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md bg-transparent border-none shadow-none p-0 flex justify-center items-center overflow-hidden">
+                  <DialogHeader className="sr-only">
+                    <DialogTitle>Ver Spot</DialogTitle>
+                    <DialogDescription>Spot publicitario de la marca en Instagram</DialogDescription>
+                  </DialogHeader>
+                  <div className="w-full flex justify-center rounded-xl overflow-hidden max-h-[80vh] overflow-y-auto custom-scrollbar">
+                    <InstagramEmbed />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </motion.div>
           </motion.div>
 
@@ -118,7 +153,7 @@ export function Hero() {
             <div className="relative group">
               {/* Dynamic shadow/glow */}
               <div className="absolute inset-0 bg-celeste/20 blur-[100px] rounded-full scale-75 group-hover:scale-110 transition-transform duration-1000" />
-              
+
               {/* Main Image */}
               <motion.div
                 animate={{ y: [0, -15, 0] }}
@@ -126,7 +161,7 @@ export function Hero() {
                 className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-[28rem] lg:h-[35rem] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
               >
                 <Image
-                  src="/images/products/jersey-1.jpg"
+                  src="images/products/Camiseta Selección Argentina 2026 Titular Talle S al XXL.jpg"
                   alt="Featured Argentina Jersey"
                   fill
                   className="object-cover"
@@ -151,17 +186,6 @@ export function Hero() {
                     <div className="text-lg font-black text-foreground">ARGENTINA 24</div>
                   </div>
                 </div>
-              </motion.div>
-              
-              {/* Stats detail */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.8 }}
-                className="absolute top-10 -right-4 sm:-right-8 w-24 h-24 bg-gold rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-background rotate-12"
-              >
-                <span className="text-[10px] font-bold text-background leading-none uppercase">Desde</span>
-                <span className="text-xl font-black text-background leading-none">$149</span>
               </motion.div>
             </div>
           </motion.div>

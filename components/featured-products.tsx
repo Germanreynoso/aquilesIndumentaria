@@ -7,99 +7,131 @@ import Image from "next/image"
 const products = [
   {
     id: 1,
-    name: "Argentina Home 2024",
-    team: "ARGENTINA",
-    price: 149,
-    originalPrice: 179,
-    rating: 4.9,
-    reviews: 234,
+    name: "Camiseta AFA Entrenamiento",
+    team: "SELECCION ARGENTINA",
+    sizes: "S al XXL",
     badge: "MÁS VENDIDO",
-    colors: ["celeste", "white"],
-    image: "/images/products/jersey-1.jpg",
+    image: "/images/products/Camiseta AFA entrenamiento Talles S al XXL.jpeg",
   },
   {
     id: 2,
-    name: "Boca Juniors Home",
-    team: "BOCA JUNIORS",
-    price: 129,
-    originalPrice: null,
-    rating: 4.8,
-    reviews: 189,
+    name: "Camiseta Argentina 2026 Titular",
+    team: "SELECCION ARGENTINA",
+    sizes: "S al XXL",
     badge: "NUEVO",
-    colors: ["blue", "gold"],
-    image: "/images/products/jersey-2.jpg",
+    image: "/images/products/Camiseta Selección Argentina 2026 Titular Talle S al XXL.jpg",
   },
   {
     id: 3,
-    name: "River Plate Away",
-    team: "RIVER PLATE",
-    price: 129,
-    originalPrice: 159,
-    rating: 4.7,
-    reviews: 156,
+    name: "Camiseta del Dibu",
+    team: "SELECCION ARGENTINA",
+    sizes: "6 al 16 | S al XXL",
     badge: null,
-    colors: ["black", "red"],
-    image: "/images/products/jersey-3.jpg",
+    image: "/images/products/Camiseta del Dibu. Para Adulto y para niño Del 6 al 16 Y del S al XXL.jpg",
   },
   {
     id: 4,
-    name: "Real Madrid Home",
-    team: "EUROPEOS",
-    price: 159,
-    originalPrice: null,
-    rating: 5.0,
-    reviews: 412,
-    badge: "ICÓNICO",
-    colors: ["white", "gold"],
-    image: "/images/products/jersey-4.jpg",
+    name: "Camiseta Argentina 2026 Infantil",
+    team: "SELECCION ARGENTINA",
+    sizes: "6 al 16",
+    badge: null,
+    image: "/images/products/Camiseta Argentina 2026 Infantil  Talles 6 al 16.jpg",
   },
   {
     id: 5,
-    name: "Manchester City Home",
-    team: "EUROPEOS",
-    price: 139,
-    originalPrice: 159,
-    rating: 4.8,
-    reviews: 201,
-    badge: "OFERTA",
-    colors: ["celeste", "white"],
-    image: "/images/products/jersey-5.jpg",
+    name: "Pupera Selección Argentina",
+    team: "SELECCION ARGENTINA",
+    sizes: "S al XXL",
+    badge: null,
+    image: "/images/products/Pupera de la Selección Argentina Talle S al XXL.jpeg",
   },
   {
     id: 6,
-    name: "Inter Miami Home",
-    team: "MLS",
-    price: 169,
-    originalPrice: null,
-    rating: 4.9,
-    reviews: 567,
+    name: "Camiseta Alternativa Boca",
+    team: "FUTBOL ARGENTINO",
+    sizes: "S al XXL",
     badge: "POPULAR",
-    colors: ["pink", "black"],
-    image: "/images/products/jersey-6.jpg",
+    image: "/images/products/Camiseta Alternativa Boca Talles S al XXL.jpg",
   },
   {
     id: 7,
-    name: "France Home 2024",
-    team: "INTERNACIONAL",
-    price: 149,
-    originalPrice: null,
-    rating: 4.7,
-    reviews: 124,
+    name: "Camiseta Infantil Boca Alternativa",
+    team: "FUTBOL ARGENTINO",
+    sizes: "6 al 16",
     badge: null,
-    colors: ["blue", "white"],
-    image: "/images/products/jersey-7.jpg",
+    image: "/images/products/Camiseta Infantil Boca Alternativa  Talles 6 al 16.jpg",
   },
   {
     id: 8,
-    name: "Argentina Retro 1986",
+    name: "Camiseta Retro Maradona",
     team: "RETRO",
-    price: 189,
-    originalPrice: 219,
-    rating: 5.0,
-    reviews: 890,
-    badge: "LIMITADA",
-    colors: ["celeste", "white"],
-    image: "/images/products/jersey-8.jpg",
+    sizes: "S al XXL",
+    badge: "ICÓNICO",
+    image: "/images/products/Camiseta Retro Maradona Talle S al XXL.jpg",
+  },
+  {
+    id: 9,
+    name: "Camiseta Retro River",
+    team: "RETRO",
+    sizes: "S al XXL",
+    badge: null,
+    image: "/images/products/Camiseta Retro River Talle S al XXL.jpg",
+  },
+  {
+    id: 10,
+    name: "Camiseta Retro Boca Alternativa",
+    team: "RETRO",
+    sizes: "Consultar talles",
+    badge: null,
+    image: "/images/products/Camiseta Retro Boca Alternativa.jpg",
+  },
+  {
+    id: 11,
+    name: "Remera Oversize Estampada",
+    team: "URBAN",
+    sizes: "S al L",
+    badge: "NUEVO",
+    image: "/images/products/Urban Remera Oversize Estampada Talles S al L.jpeg",
+  },
+  {
+    id: 12,
+    name: "Remera Oversize Lisa",
+    team: "URBAN",
+    sizes: "S al L",
+    badge: null,
+    image: "/images/products/Urban Remera Oversize Lisa Talles S al L.jpeg",
+  },
+  {
+    id: 13,
+    name: "Remera Clásica Estampada",
+    team: "URBAN",
+    sizes: "S al XXL",
+    badge: null,
+    image: "/images/products/Urban Remera Clásica estampada Talles S al XXL.jpeg",
+  },
+  {
+    id: 14,
+    name: "Remera Clásica Lisa",
+    team: "URBAN",
+    sizes: "S al XL",
+    badge: null,
+    image: "/images/products/Urban Remera Clásica Lisa Talle S al XL.jpeg",
+  },
+  {
+    id: 15,
+    name: "Musculosa Clásica Lisa",
+    team: "URBAN",
+    sizes: "S al XXL",
+    badge: null,
+    image: "/images/products/Urban Musculosa clásica lisa Talles S al XXL.jpeg",
+  },
+  {
+    id: 16,
+    name: "Remera Waffle",
+    team: "URBAN",
+    sizes: "S al XXL",
+    badge: "TENDENCIA",
+    image: "/images/products/Urban Remera Waffle Talle S al XXL.jpeg",
   },
 ]
 
@@ -193,38 +225,14 @@ export function FeaturedProducts() {
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex justify-between items-start mb-2">
                     <span className="text-[10px] tracking-[0.25em] text-celeste font-bold">{product.team}</span>
-                    <div className="flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-gold text-gold" />
-                      <span className="text-xs font-medium text-foreground">{product.rating}</span>
-                    </div>
                   </div>
                   
                   <h3 className="text-base font-bold text-foreground group-hover:text-celeste transition-colors duration-300 line-clamp-1">{product.name}</h3>
                   
-                  <div className="mt-auto pt-4 flex items-center justify-between">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-black text-foreground">${product.price}</span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-muted-foreground line-through decoration-celeste/40">${product.originalPrice}</span>
-                      )}
-                    </div>
-                    
-                    {/* Color swatches */}
-                    <div className="flex items-center -space-x-1">
-                      {product.colors.map((color) => (
-                        <div
-                          key={color}
-                          className={`w-3.5 h-3.5 rounded-full ring-2 ring-background border border-border ${
-                            color === "celeste" ? "bg-celeste" :
-                            color === "white" ? "bg-foreground" :
-                            color === "blue" ? "bg-deep-blue" :
-                            color === "gold" ? "bg-gold" :
-                            color === "black" ? "bg-background" :
-                            color === "red" ? "bg-destructive" :
-                            color === "pink" ? "bg-pink-400" : "bg-gray-400"
-                          }`}
-                        />
-                      ))}
+                  <div className="mt-auto pt-4 flex items-center justify-between border-t border-white/5">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-[0.1em]">Talles disponibles</span>
+                      <span className="text-sm font-bold text-foreground">{product.sizes}</span>
                     </div>
                   </div>
                 </div>
