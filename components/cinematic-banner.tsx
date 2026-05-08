@@ -59,7 +59,7 @@ export function CinematicBanner() {
             {/* Stats */}
             <div className="flex items-center gap-12 mt-16 pt-10 border-t border-white/5">
               <div>
-                <div className="text-4xl font-black text-foreground tracking-tighter">1986</div>
+                <div className="text-4xl font-black text-foreground tracking-tighter">1990</div>
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1 font-bold uppercase">MUNDIAL</div>
               </div>
               <div>

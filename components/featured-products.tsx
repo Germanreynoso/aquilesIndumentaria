@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Heart, ShoppingBag, Star } from "lucide-react"
 import Image from "next/image"
 
@@ -136,8 +137,44 @@ const products = [
 ]
 
 export function FeaturedProducts() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState<string>("")
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '')
+      if (hash.startsWith('search=')) {
+        setSearchQuery(decodeURIComponent(hash.split('=')[1]).toLowerCase())
+        setActiveCategory(null)
+      } else if (['seleccion-argentina', 'retro', 'futbol-argentino', 'urban'].includes(hash)) {
+        setActiveCategory(hash)
+        setSearchQuery("")
+      } else if (hash === 'all-products' || hash === 'all' || !hash) {
+        setActiveCategory(null)
+        setSearchQuery("")
+      }
+    }
+
+    // Initial check
+    handleHashChange()
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const filteredProducts = products.filter(p => {
+    if (searchQuery) {
+      return p.name.toLowerCase().includes(searchQuery) || p.team.toLowerCase().includes(searchQuery)
+    }
+    if (activeCategory) {
+      const teamId = p.team.toLowerCase().replace('ó', 'o').replace(' ', '-')
+      return teamId === activeCategory
+    }
+    return true
+  })
+
   return (
-    <section className="py-24 sm:py-32 bg-graphite relative overflow-hidden">
+    <section id="productos" className="py-24 sm:py-32 bg-graphite relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-celeste/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-deep-blue/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -151,26 +188,74 @@ export function FeaturedProducts() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-xs tracking-[0.4em] text-celeste font-bold uppercase mb-4 block">EXCLUSIVIDAD EN CADA HILO</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground mt-2 tracking-tighter leading-none">
-            NUESTRA <span className="text-celeste">SELECCIÓN</span>
+          <span className="text-xs tracking-[0.4em] text-celeste font-bold uppercase mb-4 block">
+            {searchQuery ? "RESULTADOS DE BÚSQUEDA" : "EXCLUSIVIDAD EN CADA HILO"}
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground mt-2 tracking-tighter leading-none uppercase">
+            {searchQuery ? (
+              <>PARA <span className="text-celeste">"{searchQuery}"</span></>
+            ) : (
+              <>NUESTRA <span className="text-celeste">SELECCIÓN</span></>
+            )}
           </h2>
           <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-lg">
-            Descubre las prendas que definen el estilo dentro y fuera del campo. Calidad profesional garantizada.
+            {searchQuery 
+              ? `Encontramos ${filteredProducts.length} producto${filteredProducts.length === 1 ? '' : 's'} para tu búsqueda.`
+              : "Descubre las prendas que definen el estilo dentro y fuera del campo. Calidad profesional garantizada."}
           </p>
         </motion.div>
 
-        {/* Products grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group"
+        {/* Category Filter Tabs */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12"
+        >
+          <button
+            onClick={() => { window.location.hash = 'all-products'; setActiveCategory(null); }}
+            className={`px-6 py-2 rounded-full text-xs font-bold tracking-[0.15em] transition-all duration-300 border ${
+              activeCategory === null 
+                ? 'bg-celeste border-celeste text-background' 
+                : 'bg-transparent border-border/50 text-muted-foreground hover:border-celeste/50 hover:text-foreground'
+            }`}
+          >
+            TODOS
+          </button>
+          {[
+            { id: "seleccion-argentina", name: "SELECCIÓN ARGENTINA" },
+            { id: "retro", name: "RETRO" },
+            { id: "futbol-argentino", name: "FÚTBOL ARGENTINO" },
+            { id: "urban", name: "URBAN" }
+          ].map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => { window.location.hash = cat.id; setActiveCategory(cat.id); }}
+              className={`px-6 py-2 rounded-full text-xs font-bold tracking-[0.15em] transition-all duration-300 border ${
+                activeCategory === cat.id 
+                  ? 'bg-celeste border-celeste text-background' 
+                  : 'bg-transparent border-border/50 text-muted-foreground hover:border-celeste/50 hover:text-foreground'
+              }`}
             >
+              {cat.name}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Products grid */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 min-h-[400px]">
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                layout
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 100, damping: 15 }}
+                className="group"
+              >
               <div className="relative flex flex-col h-full bg-card/40 backdrop-blur-sm border border-border/50 rounded-xl overflow-hidden hover:border-celeste/30 transition-all duration-500 shadow-xl hover:shadow-celeste/5">
                 {/* Badge */}
                 {product.badge && (
@@ -237,9 +322,10 @@ export function FeaturedProducts() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* View all button */}
         <motion.div

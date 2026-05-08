@@ -14,6 +14,8 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,6 +60,13 @@ export function Navbar() {
                 <motion.a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.hash = link.href.replace('#', '');
+                    setTimeout(() => {
+                      document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
                   className="text-xs tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-300"
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
@@ -69,13 +78,43 @@ export function Navbar() {
 
             {/* Actions */}
             <div className="flex items-center gap-3 sm:gap-4">
+              <AnimatePresence>
+                {isSearchOpen && (
+                  <motion.form
+                    initial={{ opacity: 0, width: 0 }}
+                    animate={{ opacity: 1, width: 200 }}
+                    exit={{ opacity: 0, width: 0 }}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (searchQuery.trim()) {
+                        window.location.hash = `search=${encodeURIComponent(searchQuery.trim())}`;
+                        setTimeout(() => {
+                          document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                        }, 50);
+                      }
+                    }}
+                    className="relative"
+                  >
+                    <input
+                      type="text"
+                      autoFocus
+                      placeholder="Buscar producto..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full bg-transparent border-b border-celeste text-foreground text-sm py-1 px-2 focus:outline-none placeholder:text-muted-foreground/50"
+                    />
+                  </motion.form>
+                )}
+              </AnimatePresence>
+
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Buscar"
               >
-                <Search className="w-5 h-5" />
+                {isSearchOpen ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -130,7 +169,14 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    window.location.hash = link.href.replace('#', '');
+                    setTimeout(() => {
+                      document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
                   className="text-2xl font-bold tracking-[0.1em] text-foreground hover:text-celeste transition-colors"
                 >
                   {link.name}

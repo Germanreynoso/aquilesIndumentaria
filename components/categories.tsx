@@ -68,6 +68,13 @@ export function Categories() {
             <motion.a
               key={category.id}
               href={`#${category.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = category.id;
+                setTimeout(() => {
+                  document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+              }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
