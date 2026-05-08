@@ -295,8 +295,8 @@ export function FeaturedProducts() {
                     <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
 
-                  {/* Quick add button overlay */}
-                  <div className="absolute inset-0 flex items-end justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                  {/* Quick add button overlay (Desktop only) */}
+                  <div className="absolute inset-0 hidden lg:flex items-end justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -327,6 +327,21 @@ export function FeaturedProducts() {
                       <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-[0.1em]">Talles disponibles</span>
                       <span className="text-sm font-bold text-foreground">{product.sizes}</span>
                     </div>
+                    
+                    {/* Mobile Add to Cart Button */}
+                    <motion.button 
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => addItem({
+                        id: product.id,
+                        name: product.name,
+                        image: product.image,
+                        sizes: product.sizes
+                      })}
+                      className="lg:hidden w-10 h-10 rounded-full bg-celeste text-background flex items-center justify-center shadow-lg shadow-celeste/20"
+                      aria-label="Añadir al carrito"
+                    >
+                      <ShoppingBag className="w-4 h-4" />
+                    </motion.button>
                   </div>
                 </div>
               </div>
