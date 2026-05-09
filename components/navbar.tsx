@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ShoppingBag, Search } from "lucide-react"
+import Image from "next/image"
 
 import { useCart } from "./cart-context"
 
@@ -45,16 +46,31 @@ export function Navbar() {
             {/* Logo */}
             <motion.a
               href="/"
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-4"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-foreground">
-                AQUILES
-              </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.4em] text-celeste font-bold">
-                INDUMENTARIA
-              </span>
+              <motion.div 
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-14 h-14 sm:w-16 sm:h-16 overflow-hidden rounded-xl bg-gradient-to-br from-celeste/20 to-transparent border-2 border-celeste/30 p-1.5 shadow-[0_0_20px_rgba(114,188,220,0.2)]"
+              >
+                <Image
+                  src="/images/logo-funny-v2.png"
+                  alt="Aquiles Logo"
+                  width={64}
+                  height={64}
+                  className="object-contain"
+                />
+              </motion.div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-black tracking-tighter text-foreground leading-none">
+                  AQUILES
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.4em] text-celeste font-extrabold mt-1">
+                  EDICIÓN LIMITADA 🩼
+                </span>
+              </div>
             </motion.a>
 
             {/* Desktop Navigation */}

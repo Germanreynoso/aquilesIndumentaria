@@ -45,6 +45,23 @@ export function Hero() {
         }}
       />
 
+      {/* Floating Logo Background */}
+      <motion.div
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 5, 0]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 right-10 w-[400px] h-[400px] opacity-10 blur-sm pointer-events-none hidden lg:block"
+      >
+        <Image
+          src="/images/logo-funny-v2.png"
+          alt="Watermark Logo"
+          fill
+          className="object-contain"
+        />
+      </motion.div>
+
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
@@ -66,7 +83,7 @@ export function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-celeste"></span>
               </span>
               <span className="text-[10px] tracking-[0.3em] text-foreground font-bold uppercase">
-                COLECCIÓN OFICIAL 2024/25
+                COLECCIÓN EDICIÓN MULETA 2025
               </span>
             </motion.div>
 
@@ -78,7 +95,7 @@ export function Hero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="block"
-                >EL CORAZÓN</motion.span>
+                >EL TALÓN</motion.span>
               </span>
               <span className="block text-celeste overflow-hidden">
                 <motion.span
@@ -86,7 +103,7 @@ export function Hero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="block"
-                >DEL VALLE</motion.span>
+                >DE AQUILES</motion.span>
               </span>
             </h1>
 
@@ -97,8 +114,8 @@ export function Hero() {
               transition={{ duration: 1, delay: 1 }}
               className="mt-8 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed"
             >
-              Indumentaria deportiva de alta gama diseñada para los que viven el fútbol con intensidad.
-              Calidad profesional en cada detalle.
+              Indumentaria diseñada para guerreros que, aunque estén en muletas, no pierden el estilo.
+              Próximamente: Camisetas con soporte para axilas reforzado.
             </motion.p>
 
             {/* CTA buttons */}
@@ -160,20 +177,23 @@ export function Hero() {
               {/* Dynamic shadow/glow */}
               <div className="absolute inset-0 bg-celeste/20 blur-[100px] rounded-full scale-75 group-hover:scale-110 transition-transform duration-1000" />
 
-              {/* Main Image */}
+              {/* Main Image - Now the Funny Logo */}
               <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-[28rem] lg:h-[35rem] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
+                animate={{
+                  y: [0, -20, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-80 h-80 sm:w-[32rem] sm:h-[32rem] lg:w-[40rem] lg:h-[40rem] flex items-center justify-center rounded-full bg-gradient-to-br from-celeste/20 via-transparent to-celeste/10 border-4 border-celeste/40 p-8 shadow-[0_0_100px_rgba(114,188,220,0.4)] backdrop-blur-3xl"
               >
                 <Image
-                  src="images/products/Camiseta Selección Argentina 2026 Titular Talle S al XXL.jpg"
-                  alt="Featured Argentina Jersey"
-                  fill
-                  className="object-cover"
+                  src="/images/logo-funny-v2.png"
+                  alt="Aquiles Crutches Logo"
+                  width={600}
+                  height={600}
+                  className="object-contain drop-shadow-[0_0_30px_rgba(114,188,220,0.6)]"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </motion.div>
 
               {/* Floating Badge */}
@@ -184,12 +204,12 @@ export function Hero() {
                 className="absolute -bottom-6 -left-6 sm:-left-12 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-celeste rounded-full flex items-center justify-center font-black text-background">
-                    10
+                  <div className="w-12 h-12 bg-celeste rounded-full flex items-center justify-center font-black text-background text-xs text-center leading-none">
+                    STEP<br />BY<br />STEP
                   </div>
                   <div>
-                    <div className="text-[10px] tracking-[0.2em] text-celeste font-bold">PREMIUM EDITION</div>
-                    <div className="text-lg font-black text-foreground">ARGENTINA 24</div>
+                    <div className="text-[10px] tracking-[0.2em] text-celeste font-bold">MAXIMA RECUPERACION</div>
+                    <div className="text-lg font-black text-foreground">PASOS CORTOS '26</div>
                   </div>
                 </div>
               </motion.div>
