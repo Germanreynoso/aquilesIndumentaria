@@ -28,14 +28,14 @@ const footerLinks = {
     { name: "Retro", href: "#retro" },
   ],
   help: [
-    { name: "Guía de Tallas", href: "#size" },
-    { name: "Envíos", href: "#shipping" },
-    { name: "Devoluciones", href: "#returns" },
-    { name: "Preguntas Frecuentes", href: "#faq" },
-    { name: "Contacto", href: "#contact" },
+    { name: "Guía de Tallas", href: "/ayuda#tallas" },
+    { name: "Envíos", href: "/ayuda#envios" },
+    { name: "Devoluciones", href: "/ayuda#devoluciones" },
+    { name: "Preguntas Frecuentes", href: "/ayuda#preguntas" },
+    { name: "Contacto", href: "/ayuda#contacto" },
   ],
   company: [
-    { name: "Sobre Nosotros", href: "#about" },
+    { name: "Sobre Nosotros", href: "/nosotros" },
   ],
 }
 
