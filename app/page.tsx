@@ -38,7 +38,7 @@ export default function Home() {
       <Categories />
       <FeaturedProducts />
       <CinematicBanner />
-      <SocialSection />
+      {/* <SocialSection /> */}
       <Newsletter />
       <Footer />
     </main>
