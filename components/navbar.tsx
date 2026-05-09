@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ShoppingBag, Search, User } from "lucide-react"
+import { Menu, X, ShoppingBag, Search } from "lucide-react"
 
 import { useCart } from "./cart-context"
 
@@ -118,14 +118,6 @@ export function Navbar() {
                 aria-label="Buscar"
               >
                 {isSearchOpen ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="hidden sm:block p-2 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Cuenta"
-              >
-                <User className="w-5 h-5" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1 }}

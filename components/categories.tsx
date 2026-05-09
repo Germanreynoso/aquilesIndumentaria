@@ -93,8 +93,7 @@ export function Categories() {
                 <h3 className="text-lg font-bold text-foreground mt-2 tracking-tight">{category.name}</h3>
                 <p className="text-sm text-muted-foreground mt-2">{category.description}</p>
                 
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
-                  <span className="text-xs text-muted-foreground">{category.items}</span>
+                <div className="flex items-center justify-end mt-6 pt-4 border-t border-border">
                   <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                 </div>
               </div>

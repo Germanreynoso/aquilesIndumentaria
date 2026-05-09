@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Heart, ShoppingBag, Star } from "lucide-react"
+import { ShoppingBag, Star } from "lucide-react"
 import Image from "next/image"
 import { useCart } from "./cart-context"
 
@@ -145,15 +145,29 @@ export function FeaturedProducts() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '')
+      let shouldScroll = false;
+
       if (hash.startsWith('search=')) {
         setSearchQuery(decodeURIComponent(hash.split('=')[1]).toLowerCase())
         setActiveCategory(null)
+        shouldScroll = true;
       } else if (['seleccion-argentina', 'retro', 'futbol-argentino', 'urban'].includes(hash)) {
         setActiveCategory(hash)
         setSearchQuery("")
-      } else if (hash === 'all-products' || hash === 'all' || !hash) {
+        shouldScroll = true;
+      } else if (hash === 'all-products' || hash === 'all') {
         setActiveCategory(null)
         setSearchQuery("")
+        shouldScroll = true;
+      } else if (!hash) {
+        setActiveCategory(null)
+        setSearchQuery("")
+      }
+
+      if (shouldScroll) {
+        setTimeout(() => {
+          document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     }
 
@@ -266,15 +280,6 @@ export function FeaturedProducts() {
                   </div>
                 )}
 
-                {/* Wishlist button */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="absolute top-4 right-4 z-20 p-2.5 bg-background/60 backdrop-blur-md border border-border/50 rounded-full text-foreground hover:bg-celeste hover:text-background transition-all duration-300"
-                  aria-label="Añadir a favoritos"
-                >
-                  <Heart className="w-4 h-4" />
-                </motion.button>
 
                 {/* Product image area */}
                 <div className="relative aspect-[4/5] bg-secondary/30 overflow-hidden">
@@ -360,6 +365,13 @@ export function FeaturedProducts() {
         >
           <motion.a
             href="#all-products"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = 'all-products';
+              setTimeout(() => {
+                document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+              }, 50);
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center justify-center px-10 py-5 bg-transparent border-2 border-foreground/20 text-foreground text-sm font-black tracking-[0.3em] rounded-xl hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-500"

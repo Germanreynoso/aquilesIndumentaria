@@ -22,10 +22,10 @@ const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const footerLinks = {
   shop: [
-    { name: "Argentina", href: "#argentina" },
-    { name: "Boca Juniors", href: "#boca" },
-    { name: "River Plate", href: "#river" },
-    { name: "Retro", href: "#retro" },
+    { name: "Selección Argentina", href: "/#seleccion-argentina" },
+    { name: "Fútbol Argentino", href: "/#futbol-argentino" },
+    { name: "Retro", href: "/#retro" },
+    { name: "Urban", href: "/#urban" },
   ],
   help: [
     { name: "Guía de Tallas", href: "/ayuda#tallas" },

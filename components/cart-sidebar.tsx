@@ -98,6 +98,11 @@ export function CartSidebar() {
 
         {items.length > 0 && (
           <div className="p-6 border-t border-white/10 bg-background/50 backdrop-blur-md">
+            <div className="mb-4 p-3 bg-celeste/10 border border-celeste/20 rounded-lg">
+              <p className="text-xs text-celeste/90 text-center leading-relaxed">
+                Recomendamos revisar la <a href="/ayuda#tallas" onClick={() => setIsCartOpen(false)} className="font-bold underline hover:text-celeste transition-colors">Guía de Tallas</a> y los <a href="/ayuda#envios" onClick={() => setIsCartOpen(false)} className="font-bold underline hover:text-celeste transition-colors">Envíos</a> antes de confirmar tu pedido.
+              </p>
+            </div>
             <button
               onClick={handleWhatsAppCheckout}
               className="w-full py-4 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-black tracking-[0.2em] rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#25D366]/20 hover:scale-[1.02] active:scale-95"
