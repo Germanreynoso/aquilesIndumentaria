@@ -1,18 +1,41 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle, Loader2 } from "lucide-react"
 import { useState } from "react"
 
 export function Newsletter() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
+    if (!email) return
+    
+    setIsLoading(true)
+    setError("")
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error?.message || 'Ocurrió un error al intentar suscribirse')
+      }
+
       setIsSubscribed(true)
       setEmail("")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error inesperado. Intenta de nuevo.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -56,25 +79,37 @@ export function Newsletter() {
               <span className="text-lg font-semibold">¡Bienvenido a la familia!</span>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Ingresa tu correo electrónico"
-                className="flex-1 px-6 py-4 bg-secondary border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-celeste transition-colors"
-                required
-              />
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-semibold tracking-wide rounded-sm hover:bg-foreground/90 transition-colors"
-              >
-                UNIRSE
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </form>
+            <>
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Ingresa tu correo electrónico"
+                  className="flex-1 px-6 py-4 bg-secondary border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-celeste transition-colors"
+                  required
+                />
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-semibold tracking-wide rounded-sm hover:bg-foreground/90 transition-colors disabled:opacity-70"
+                >
+                  {isLoading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      UNIRSE
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+              {error && (
+                <p className="text-red-500 text-sm mt-3">{error}</p>
+              )}
+            </>
           )}
         </motion.div>
 
