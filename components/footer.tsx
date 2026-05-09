@@ -1,14 +1,30 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Instagram, Twitter, Youtube, Facebook, MessageCircle } from "lucide-react"
+import { Instagram, MessageCircle, Facebook } from "lucide-react"
+
+const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+)
 
 const footerLinks = {
   shop: [
     { name: "Argentina", href: "#argentina" },
     { name: "Boca Juniors", href: "#boca" },
     { name: "River Plate", href: "#river" },
-    { name: "Europeos", href: "#european" },
     { name: "Retro", href: "#retro" },
   ],
   help: [
@@ -20,18 +36,14 @@ const footerLinks = {
   ],
   company: [
     { name: "Sobre Nosotros", href: "#about" },
-    { name: "Empleos", href: "#careers" },
-    { name: "Prensa", href: "#press" },
-    { name: "Sostenibilidad", href: "#sustainability" },
   ],
 }
 
 const socialLinks = [
   { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/aquiles.indumentaria/" },
   { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/3816464923" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-  { name: "YouTube", icon: Youtube, href: "https://youtube.com" },
   { name: "Facebook", icon: Facebook, href: "https://facebook.com" },
+  { name: "TikTok", icon: TiktokIcon, href: "https://tiktok.com" },
 ]
 
 export function Footer() {
