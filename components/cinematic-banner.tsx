@@ -47,6 +47,12 @@ export function CinematicBanner() {
 
             <div className="flex flex-col sm:flex-row gap-5 mt-12">
               <motion.button
+                onClick={() => {
+                  window.location.hash = 'retro';
+                  setTimeout(() => {
+                    document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
+                }}
                 whileHover={{ scale: 1.05, backgroundColor: "#EAB308" }}
                 whileTap={{ scale: 0.95 }}
                 className="group flex items-center justify-center gap-3 px-10 py-5 bg-gold text-background font-black tracking-[0.2em] rounded-xl transition-all duration-300"

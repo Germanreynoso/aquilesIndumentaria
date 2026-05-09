@@ -109,6 +109,12 @@ export function Hero() {
               className="mt-10 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start"
             >
               <motion.button
+                onClick={() => {
+                  window.location.hash = 'all-products';
+                  setTimeout(() => {
+                    document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
+                }}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(114,188,220,0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 className="group flex items-center justify-center gap-3 px-10 py-5 bg-foreground text-background font-black tracking-[0.2em] rounded-xl hover:bg-celeste hover:text-background transition-all duration-300"
