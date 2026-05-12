@@ -13,7 +13,7 @@ interface Message {
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "¡Hola! Soy el asistente de Aquiles Indumentaria. ¿En qué puedo ayudarte hoy?" }
+    { role: "assistant", content: "¡Buenas! Soy el asistente de Aquiles Indumentaria. ¿En qué te puedo ayudar, che?" }
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
