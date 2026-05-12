@@ -68,6 +68,7 @@ export const viewport: Viewport = {
 
 import { CartProvider } from '@/components/cart-context'
 import { CartSidebar } from '@/components/cart-sidebar'
+import { Chatbot } from '@/components/chatbot'
 
 export default function RootLayout({
   children,
@@ -80,6 +81,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <CartSidebar />
+          <Chatbot />
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </CartProvider>
       </body>
